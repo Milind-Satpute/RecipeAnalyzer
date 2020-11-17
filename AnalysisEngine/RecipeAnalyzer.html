@@ -1,11 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+            
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width" />
+	<script type="text/javascript" 
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+	<script type="text/javascript">
+        $(document).ready(function () {
+
+            		
+			
+		 $('#ajaxBtn').click(function(){
+		 	
+			var ProductDetails = new Object();
+            ProductDetails.ingredientID =  $("#ingredientID").val();
+            ProductDetails.QtyID = $("#QtyID").val();
+			console.log(ProductDetails)
+			$.ajax({
+		type: 'POST',
+		url: 'http://localhost:33649/api/TestApi/TestMethod',
+		data: ProductDetails,
+		contentType: 'application/x-www-form-urlencoded',
+		dataType: 'json',
+		success: function(data){ console.log(data) }
+});
+			
+			
+    });
+    </script>
 </head>
 <body>
+	<h1> jQuery post() method demo 
+	</h1>
+	<ul>
+        <li><label>Ingredient:</label><input type="text" id="ingredientID" name="first-name"></li>
+		<li><label>Qty:</label><input type="text" id="QtyID" name="first-name"></li>
+		<li><input type="button" id="ajaxBtn" value="Send POST request" /></li>
+		</ul>		
 
-
+	<p>
+	</p>
 </body>
 </html>

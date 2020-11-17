@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-
+from flask import jsonify
+import json;
 
 def getAnalysisData():
     df = pd.read_csv(r'..\DS\DataSet\Nutrients\archive\nutrients_csvfile.csv')
@@ -38,6 +39,7 @@ def getAnalysisData():
                 break
 
     dfAnalysis = pd.DataFrame(analysisFinalData, columns=columnlist)
+    print(dfAnalysis.to_json());
     return dfAnalysis;
 
 
