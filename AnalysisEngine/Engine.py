@@ -3,16 +3,16 @@ import numpy as np
 from flask import jsonify
 import json;
 
-def getAnalysisData():
+def getAnalysisData(data):
     df = pd.read_csv(r'..\DS\DataSet\Nutrients\archive\nutrients_csvfile.csv')
 
     dfNutrient = pd.DataFrame(df.values,
                               columns=['Food', 'Measure', 'Grams', 'Calories', 'Protein', 'Fat', 'SatFat', 'Fiber'
                                   , 'Carbs', 'Category'])
     # print(dfNutrient)
-
-    dfdata = pd.read_csv(r'..\DS\DataSet\Nutrients\archive\Recipe.csv')
-    dfRecipe = pd.DataFrame(dfdata.values, columns=['Food', 'Grams'])
+    print(type(data));
+    #dfdata = pd.read_csv(r'..\DS\DataSet\Nutrients\archive\Recipe.csv')
+    dfRecipe = pd.DataFrame(data, columns=['Food', 'Grams'])
     # print(dfRecipe)
     print('=======recipe=====')
     columnlist = ['Food', 'Measure', 'Grams', 'Calories', 'Protein', 'Fat', 'SatFat', 'Fiber', 'Carbs', 'Category'];
@@ -41,7 +41,6 @@ def getAnalysisData():
     dfAnalysis = pd.DataFrame(analysisFinalData, columns=columnlist)
     print(dfAnalysis.to_json());
     return dfAnalysis;
-
 
 def getTotal(dfAnalysis):
     print('======Summerize Value=====')
